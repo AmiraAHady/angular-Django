@@ -2,14 +2,23 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
+import { UsersComponent } from './users/users.component';
+import { MoviesComponent } from './movies/movies.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent,ProductsComponent,FooterComponent],
+  imports: [NavbarComponent,ProductsComponent,FooterComponent,UsersComponent,MoviesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'first_demo';
+  title = 'E-commerce APP';
+  app_header="https://images.bauerhosting.com/empire/2022/01/EMPIRE-100-Greatest-Movies-List.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=1440&q=80"
+  disabled=false
+
+  changeState(){
+    this.disabled=!this.disabled
+  }
+
 }

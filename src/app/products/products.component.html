@@ -1,5 +1,11 @@
-<h1>
-    products component
+<h1>products component</h1>
+<input type="text" class="form-control" id="prodName" placeholder="Enter product Name" name="email" [(ngModel)]="searchValue">
+<h2>{{searchValue}}</h2>
 
-</h1>
+<div class="demo-section">
+    Button toggles badge visibility
+    <button mat-raised-button matBadge="7" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+        Hide
+    </button>
+  </div>
 <app-product-card></app-product-card>
