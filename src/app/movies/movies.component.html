@@ -1,7 +1,6 @@
 <div class="py-5">
   <div class="row mb-3">
     @for (movie of movies; track $index) {
-
     <div class="col-md-12 col-lg-4 mb-4 mb-lg-3">
       <div class="card">
         <div class="d-flex justify-content-between p-3">
@@ -10,7 +9,7 @@
             <div
             class="bg-warning rounded align-items-center justify-content-center shadow-1-strong px-1"
           >
-            <p class="text-dark mb-0 small">top Rated</p>
+            <p class="text-dark mb-0 small">Top Rated</p>
           </div>
 
           }@else {
@@ -29,6 +28,7 @@
           alt="Laptop"
         />
         <div class="card-body">
+          
           <div class="d-flex justify-content-between">
             <!-- <p class="small"><a href="#!" class="text-muted">Laptops</a></p> -->
             <!-- <p class="small text-danger"><s>$1099</s></p> -->
@@ -38,12 +38,18 @@
             <h5 class="mb-0" [ngClass]="movie.vote_average>7?'topRated':'text-dark'">{{ movie.title }}</h5>
             <!-- <h5 class="text-dark mb-0">$999</h5> -->
           </div>
-
+         
+          <!-- <p class="text-muted mb-0" > -->
+            
+            <!-- {{ movie.vote_average | number: '1.1-1'}} -->
+          <!-- </p> -->
           <div class="d-flex justify-content-between mb-2">
             <p class="text-muted mb-0" >
-              {{ movie.release_date }}
+              {{ movie.release_date |date}}
             </p>
+            <app-movie-rating [rating]="movie.vote_average/2" (messagefromchild)="respondToChild($event)"></app-movie-rating>
             <button class="btn" [ngStyle]="{'background-color': movie.video? 'green' : 'red' }">Watch</button>
+            
           </div>
         </div>
       </div>

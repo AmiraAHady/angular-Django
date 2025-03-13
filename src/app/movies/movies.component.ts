@@ -1,10 +1,11 @@
-import { NgClass, NgStyle } from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
+import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [NgClass,NgStyle],
+  imports: [NgClass, NgStyle, DatePipe, DecimalPipe, MovieRatingComponent],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css',
 })
@@ -25,7 +26,7 @@ export class MoviesComponent {
       release_date: '2025-02-13',
       title: 'The Gorge',
       video: false,
-      vote_average: 7.769,
+      vote_average: 4.769,
       vote_count: 1673,
     },
     {
@@ -76,7 +77,7 @@ export class MoviesComponent {
       release_date: '2025-02-12',
       title: 'Captain America: Brave New World',
       video: true,
-      vote_average: 6.2,
+      vote_average: 5.2,
       vote_count: 873,
     },
     {
@@ -110,7 +111,7 @@ export class MoviesComponent {
       release_date: '2024-10-01',
       title: 'Panda Plan',
       video: false,
-      vote_average: 7.075,
+      vote_average: 3.075,
       vote_count: 147,
     },
     {
@@ -161,7 +162,7 @@ export class MoviesComponent {
       release_date: '2024-09-07',
       title: 'The Substance',
       video: false,
-      vote_average: 7.1,
+      vote_average: 4.1,
       vote_count: 4080,
     },
     {
@@ -352,4 +353,8 @@ export class MoviesComponent {
       vote_count: 101,
     },
   ];
+
+  respondToChild(eventData:string) {
+    console.log(eventData);
+  }
 }

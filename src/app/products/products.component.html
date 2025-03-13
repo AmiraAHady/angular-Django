@@ -1,11 +1,39 @@
-<h1>products component</h1>
-<input type="text" class="form-control" id="prodName" placeholder="Enter product Name" name="email" [(ngModel)]="searchValue">
-<h2>{{searchValue}}</h2>
+<!-- <h1>products component</h1>
+<input type="text" class="form-control" id="prodName" placeholder="Enter product Name" name="email" [(ngModel)]="searchValue"> -->
+<!-- <h2>{{searchValue}}</h2> -->
 
-<div class="demo-section">
+<!-- <div class="demo-section">
     Button toggles badge visibility
     <button mat-raised-button matBadge="7" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
         Hide
     </button>
+  </div> -->
+<!-- <app-product-card></app-product-card> -->
+<div class="py-5">
+  <div class="row mb-3">
+    @for (item of products; track $index) {
+    <div class="col-md-12 col-lg-4 mb-4 mb-lg-3">
+      <div class="card">
+        <img [src]="item.image" class="card-img-top" alt="Laptop" />
+        <div class="card-body">
+          <div class="d-flex justify-content-between"></div>
+
+          <div class="d-flex justify-content-between mb-3">
+            <h5 class="mb-0">
+              {{ item.title |uppercase}}
+            </h5>
+            <h5 class="text-dark mb-0">{{ item.price |currency:'EUR' }}</h5>
+          </div>
+
+          <div class="d-flex justify-content-between mb-2">
+            <p class="text-muted mb-0">
+              <!-- {{ movie.release_date }} -->
+            </p>
+            <button class="btn btn-success">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
   </div>
-<app-product-card></app-product-card>
+</div>
