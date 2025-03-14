@@ -4,11 +4,12 @@ import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsersComponent } from './users/users.component';
 import { MoviesComponent } from './movies/movies.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent,ProductsComponent,FooterComponent,UsersComponent,MoviesComponent],
+  imports: [RouterOutlet,NavbarComponent,FooterComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

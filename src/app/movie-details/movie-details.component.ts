@@ -1,18 +1,16 @@
-import { DatePipe, DecimalPipe, NgClass, NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
-import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-movies',
+  selector: 'app-movie-details',
   standalone: true,
-  imports: [RouterLink,NgClass, NgStyle, DatePipe, DecimalPipe, MovieRatingComponent],
-  templateUrl: './movies.component.html',
-  styleUrl: './movies.component.css',
+  imports: [],
+  templateUrl: './movie-details.component.html',
+  styleUrl: './movie-details.component.css',
 })
-export class MoviesComponent {
-  // movies:any[]=[]
-  movies = [
+export class MovieDetailsComponent implements OnInit {
+  id!:number
+  allMovies=[
     {
       adult: false,
       backdrop_path: '/9nhjGaFLKtddDPtPaX5EmKqsWdH.jpg',
@@ -354,8 +352,11 @@ export class MoviesComponent {
       vote_count: 101,
     },
   ];
+  seletecMovie!:any;
+  constructor(private route: ActivatedRoute) {}
+  ngOnInit() {
+   this.id= parseInt(this.route.snapshot.params['id'])
+   this.seletecMovie=this.allMovies.find((movie)=>movie.id==this.id)
 
-  respondToChild(eventData:string) {
-    console.log(eventData);
   }
 }
