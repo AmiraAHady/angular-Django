@@ -61,6 +61,7 @@
                 [ngStyle]="{
                   'background-color': movie.video ? 'green' : 'red'
                 }"
+                (click)="goToDetails(movie.id)"
               >
                 Watch
               </button>
