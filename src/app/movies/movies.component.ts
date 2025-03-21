@@ -7,24 +7,46 @@ import { MoviesService } from '../services/movies.service';
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [RouterLink,NgClass, NgStyle, DatePipe, DecimalPipe, MovieRatingComponent],
+  imports: [
+    RouterLink,
+    NgClass,
+    NgStyle,
+    DatePipe,
+    DecimalPipe,
+    MovieRatingComponent,
+  ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css',
 })
-export class MoviesComponent  implements OnInit{
-  constructor(private router:Router,private moviesService:MoviesService){}
-  movies!:any[]
+export class MoviesComponent {
+  
+  
+  constructor(private router: Router, private moviesService: MoviesService) {}
+  movies!: any[];
+  currentPage:number=1
 
   ngOnInit(): void {
-      this.movies=this.moviesService.getAllMovies()
+    this.moviesService.movies.subscribe((newMovieList)=>{
+      this.movies=newMovieList;
+    })
   }
- 
-  
-  respondToChild(eventData:string) {
+
+  respondToChild(eventData: string) {
     console.log(eventData);
   }
 
-  goToDetails(movieId:number){
-      this.router.navigate(['/moviedetails',movieId])
+  goToDetails(movieId: number) {
+    this.router.navigate(['/moviedetails', movieId]);
+  }
+
+  nextPage(){
+    this.currentPage++;
+    this.moviesService.changePage(this.currentPage)
+    
+  }
+  prevPage(){
+    this.currentPage--;
+    // console.log(this.currentPage);
+    this.moviesService.changePage(this.currentPage)
   }
 }

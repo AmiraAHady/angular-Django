@@ -1,4 +1,6 @@
 <div class="py-5">
+  <button class="btn btn-primary " (click)="prevPage()" [disabled]="currentPage==1">Prev</button>
+  <button class="btn btn-primary" (click)="nextPage()">Next</button>
   <div class="row mb-3">
     @for (movie of movies; track $index) {
     

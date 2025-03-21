@@ -10,22 +10,12 @@ import { MoviesService } from '../services/movies.service';
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent implements OnInit {
-  // @Input()id!:number
-    id!:number
-  allMovies!:any[]
-  seletecMovie!:any;
-  // constructor() {}
-  // ngOnInit() {
-  //  this.seletecMovie=this.allMovies.find((movie)=>movie.id==this.id)
-
-  // }
-  constructor(private route: ActivatedRoute,private moviesService:MoviesService) {}
+  @Input() id!: number;
+  seletecMovie!: any;
+  constructor(private moviesService: MoviesService) {}
   ngOnInit() {
-    this.allMovies=this.moviesService.getAllMovies();
-   this.id= parseInt(this.route.snapshot.params['id'])
-   this.seletecMovie=this.allMovies.find((movie)=>movie.id==this.id)
-
+    this.moviesService.getMovieById(this.id).subscribe((data) => {
+      this.seletecMovie = data;
+    });
   }
 }
-//1- private route: ActivatedRoute ,this.route.snapshot.params['id']
-//2- @Input()
