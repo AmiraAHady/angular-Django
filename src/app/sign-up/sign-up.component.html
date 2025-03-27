@@ -1,0 +1,38 @@
+<form [formGroup]="userForm" (ngSubmit)="signup()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      formControlName="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  @if ( email?.errors?.['required']&& (email?.dirty || email?.touched)) {
+  <p class="text-danger">Email is Required</p>
+  }
+  @if ( email?.invalid&& (email?.dirty || email?.touched)) {
+  <p class="text-danger">Enter a Valid Email</p>
+  }
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      formControlName="password"
+    />
+  </div>
+  @if ( password?.invalid&& (password?.dirty || password?.touched)) {
+    <p class="text-danger">Enter a Valid Password</p>
+    }
+  <button
+    type="submit"
+    class="btn btn-primary mb-5"
+    [disabled]="userForm.invalid"
+  >
+    SignUp
+  </button>
+</form>

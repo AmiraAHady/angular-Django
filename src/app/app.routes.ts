@@ -10,6 +10,8 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import { AddProductComponent } from './dashbord/add-product/add-product.component';
 import { OverviewComponent } from './dashbord/overview/overview.component';
 import { authGuard } from './Guards/auth-guard.guard';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const routes: Routes = [
   // path ->component
@@ -28,6 +30,8 @@ export const routes: Routes = [
 //   { path: 'movies', component: MoviesComponent,canActivate: [authGuard]},
   { path: 'moviedetails/:id', component: MovieDetailsComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: 'contact', component: ContactusComponent },
   { path: '**', component: NotFoundComponent },
 ];

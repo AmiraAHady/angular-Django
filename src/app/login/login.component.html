@@ -1,0 +1,50 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      name="email"
+      ngModel
+      pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+      required
+      #email="ngModel"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  @if (email.invalid&&email.touched) {
+  <p class="text-danger">Enter a valid Email</p>
+  }
+  <!-- @if (loginForm.controls['email']?.invalid&&loginForm.controls['email']?.touched) {
+  <p class="text-danger">Enter a valid Email</p>
+  } -->
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="password"
+      ngModel
+      minlength="8"
+      required
+      #password="ngModel"
+    />
+  </div>
+  @if (password.invalid&&password.touched) {
+  <p class="text-danger">
+    Must contain at least one number and one uppercase and lowercase letter, and
+    at least 8 or more characters
+  </p>
+  }
+
+  <button
+    type="submit"
+    class="btn btn-primary mb-5"
+    [disabled]="loginForm.invalid"
+  >
+    Login
+  </button>
+</form>
